@@ -96,16 +96,23 @@ class _MyHomePageState extends State<MyHomePage> {
            return Expanded(
              child: AlertDialog(
                title: Text('Add Task'),
-               content: TextField(
+               content:Container(
+
+                   decoration: BoxDecoration(
+                     border: Border.all(color: Colors.black87),
+                         borderRadius: BorderRadius.circular(10)
+                   ),
+                   child: TextField(
                  decoration: InputDecoration(
                    border: InputBorder.none,
                    hintText:'Task Name'
                  ),
                controller: taskname,
-               ),
+               )),
 
                actions: [
                  Container(
+                   alignment: Alignment.center,
                    decoration: BoxDecoration(
                      borderRadius: BorderRadius.circular(10),
                      color: Colors.green
