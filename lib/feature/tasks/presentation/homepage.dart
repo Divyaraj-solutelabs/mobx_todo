@@ -90,8 +90,7 @@ class _MyHomePageState extends State<MyHomePage> {
          context: context,
          builder: (BuildContext context) {
            TextEditingController taskname= TextEditingController() ;
-           return Expanded(
-             child: AlertDialog(
+           return  AlertDialog(
                title: Text('Add Task'),
                content:Container(
 
@@ -124,8 +123,7 @@ class _MyHomePageState extends State<MyHomePage> {
                    ),
                  )
                ],
-             ),
-           );
+             );
          },
        );
 
