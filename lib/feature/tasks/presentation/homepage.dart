@@ -29,10 +29,8 @@ class _MyHomePageState extends State<MyHomePage> {
           'TODO APP'
         ),
       ),
-        body:Column(
-     children: [
-       Expanded(
-           child: Observer(
+        body:
+        Observer(
 
              builder:(context){
                 return tasks.TasksList.isEmpty?Center(
@@ -82,10 +80,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 );
 
              }
-           )
-       )
-     ],
-    ),
+           ),
+
+
     floatingActionButton: FloatingActionButton(
      onPressed: (){
        showDialog(
