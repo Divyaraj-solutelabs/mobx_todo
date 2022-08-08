@@ -44,18 +44,24 @@ class DatabaseProvider{
 
   Future<List<TaskModel>> getTasks() async {
     final db = await database;
-    var notes = await db.query(TABLE_TASK, columns: [
-      COLUMN_ID,
-      COLUMN_TASK,
-      COLUMN_COMPELETED
-    ]);
-    List<TaskModel> tasksList = <TaskModel>[];
-    notes.forEach((currentTask) {
-      TaskModel task = TaskModel.fromMap(currentTask);
-      tasksList.add(task);
-    });
-    return tasksList.reversed.toList();
+    final List<Map<String, Object?>> queryResult = await db.query(TABLE_TASK);
+    return queryResult.map((e) => TaskModel.fromMap(e)).toList();
   }
+
+  // Future<List<TaskModel>> getTasks() async {
+  //   final db = await database;
+  //   var notes = await db.query(TABLE_TASK, columns: [
+  //     COLUMN_ID,
+  //     COLUMN_TASK,
+  //     COLUMN_COMPELETED
+  //   ]);
+  //   List<TaskModel> tasksList = <TaskModel>[];
+  //   notes.forEach((currentTask) {
+  //     TaskModel task = TaskModel.fromMap(currentTask);
+  //     tasksList.add(task);
+  //   });
+  //   return tasksList.reversed.toList();
+  // }
 
   Future<TaskModel> insert(TaskModel task) async {
     final db = await database;

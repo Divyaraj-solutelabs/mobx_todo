@@ -1,17 +1,20 @@
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:mobx/mobx.dart';
+import 'dart:developer';
 
-import 'feature/tasks/presentation/homepage.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mobx_todo/feature/bloc_todo/blocs/database.bloc.dart';
+
+import 'package:mobx_todo/feature/bloc_todo/blocs/database.state.dart';
+import 'package:mobx_todo/feature/bloc_todo/blocs/todo.bloc.dart';
+import 'package:mobx_todo/feature/bloc_todo/blocs/todo.state.dart';
+import 'package:mobx_todo/feature/bloc_todo/presentation/hompage.dart';
 
 void main() {
-
-  mainContext.config = mainContext.config.clone(
-    isSpyEnabled: true,
+  BlocOverrides.runZoned(
+          () => runApp(MultiBlocProvider(providers: [
+        BlocProvider<DatabaseBloc>(create: (context) => DatabaseBloc()..initDatabase())
+      ], child: const MyApp()))
   );
-  mainContext.spy(print);
-
-  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -22,11 +25,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(),
+      debugShowCheckedModeBanner: false,
+      home: const MyHomePage(title: 'Flutter Todo Apps'),
     );
   }
 }
