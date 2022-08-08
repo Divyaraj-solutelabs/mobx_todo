@@ -52,14 +52,6 @@ class _MyHomePageState extends State<MyHomePage> {
                         padding: const EdgeInsets.all(8.0),
                         child: Column(
                           children: [
-                            // TextFormField(
-                            //   maxLines: 1,
-                            //   onChanged: (value) {
-                            //     setState(() {
-                            //       _text = value;
-                            //     });
-                            //   },
-                            // ),
                             const SizedBox(height: 10.0,),
                             Expanded(
                               child: ListView.separated(
@@ -73,7 +65,6 @@ class _MyHomePageState extends State<MyHomePage> {
                                         todos[index].text,
                                         style: const TextStyle(
                                             fontSize: 24.0,
-                                            fontWeight: FontWeight.bold
                                         ),
                                       )),
                                       IconButton(
@@ -125,7 +116,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           border: InputBorder.none,
                           hintText:'Task Name'
                       ),
-                      // controller: taskname,
+
                     )),
 
                 actions: [
@@ -141,9 +132,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           log(_text);
                           _todoBloc!.addTodos(_text);
                         }
-                        // final task=TaskModel(task: taskname.text, compeletd: "0");
-                        // tasks.addTask(task);
-                        Navigator.pop(context);
+                       Navigator.pop(context);
                       },
                       child: Text("ADD"),
                     ),
@@ -156,7 +145,7 @@ class _MyHomePageState extends State<MyHomePage> {
         },
         tooltip: 'Increment',
         child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ),
     );
   }
 }
